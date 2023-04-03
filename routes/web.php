@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/books', function () {
+    // add this comment
     return [
         ["id" => 1, "image" => 'https://covers.openlibrary.org/b/olid/OL27213498M-M.jpg'],
         ["id" => 2, "image" => 'https://covers.openlibrary.org/b/olid/OL25418275M-M.jpg'],
