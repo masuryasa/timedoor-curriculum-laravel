@@ -14,6 +14,10 @@ body {
     text-decoration: underline;
 }
 
+.image-detail {
+    padding: 35px 0 35px 35px;
+}
+
 #synopsis {
     margin-bottom: 0;
 }
@@ -22,9 +26,17 @@ body {
     display: none;
 }
 
-#read-btn {
+#more-btn {
     color: #337ab7;
     cursor: pointer;
+}
+
+#more-btn:hover {
+    text-decoration: underline;
+}
+
+.subject {
+    color: #337ab7;
 }
 
 .mt-10 {

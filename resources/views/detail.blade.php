@@ -1,11 +1,7 @@
 @php
     function chunkString(string $string, int $maxLength) {
         $initialText = substr($string, 0, $maxLength);
-        // $j = strlen($string) - $maxLength;
         $moreText = substr($string, $maxLength, strlen($string) - $maxLength);
-        // return $i;
-        // return substr("Hello world",0,10);
-        // return array($initialText);
         return array($initialText, $moreText);
     }
 @endphp
@@ -49,7 +45,7 @@
                                 @endphp
 
                                 <p>{{ $initialText }}<span id="dots">...</span><span id="more">{{ $moreText }}</span></p>
-                                <span id="more-btn" onclick="showCompleteText()">Read more</span>
+                                <p class="h-link" id="more-btn" onclick="showCompleteText()">Read more</p>
                             @else
                                 <p>{{ $details['desc'] }}</p>
                             @endif
