@@ -15,8 +15,8 @@
                     <div class="thumbnail">
                         <img src="{{ $b['image'] }}" alt="cover-of-books" width="250px">
                         <div class="caption">
-                            <h3>Books Title</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima quasi a quam quisquam temporibus, tenetur pariatur quod tempore reprehenderit debitis distinctio possimus voluptas sed. Error, quasi! Ex ipsam dignissimos ipsum?</p>
+                            <h3>{{ $b['title'] }}</h3>
+                            <p>{{ $b['short_desc'] }}</p>
                             <div class="text-center"><a href="{{ url('books/detail') }}" class="btn btn-default" role="button">Show Detail</a></div>
                         </div>
                     </div>
