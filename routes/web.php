@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/books', [BookController::class, 'index']);
 
-Route::get('/books/detail', [BookController::class, 'show']);
+Route::get('/books/detail', [BookController::class, 'detail']);

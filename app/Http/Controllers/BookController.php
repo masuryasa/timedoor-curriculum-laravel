@@ -25,7 +25,7 @@ class BookController extends Controller
         return view('index', ['books' => $books]);
     }
 
-    public function show() {
+    public function detail() {
         $details = [
             "id" => 1,
             "isbn" => '1471156265',
