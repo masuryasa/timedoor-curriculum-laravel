@@ -4,16 +4,13 @@
 
 @section('content')
     <!-- item cards -->
-    @php
-        $books = array_chunk($books, 4);
-    @endphp
 
-    @foreach ($books as $book)
+    @foreach ($books->chunk(4) as $book)
         <div class="row">
             @foreach ($book as $b)
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                        <img src="{{ $b['image'] }}" alt="cover-of-books" width="250px">
+                        <img src="{{ $b['image_path'] }}" alt="cover-of-books" width="250px">
                         <div class="caption">
                             <h3>{{ $b['title'] }}</h3>
                             <p>{{ $b['short_desc'] }}</p>
@@ -30,7 +27,7 @@
     <!-- pagination -->
     <div class="text-center">
         {{-- add pagination bars here --}}
-        <nav aria-label="Page navigation">
+        {{-- <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li>
                     <a href="#" aria-label="Previous">
@@ -48,6 +45,11 @@
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav> --}}
+        @isset($books)
+            <div class="d-flex">
+                {!! $books->links() !!}
+            </div>
+        @endisset
     </div>
 @endsection

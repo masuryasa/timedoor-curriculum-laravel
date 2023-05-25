@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
     public function index() {
-        $books = [
+        /* $books = [
             ["id" => 1, "image" => 'https://covers.openlibrary.org/b/olid/OL27213498M-M.jpg', "title" => "It Ends With Us", "short_desc" => "Lily hasn’t always had it easy, but that’s never stopped her from working hard for the life she wants. She’s come a long way from the small town where she grew up—she graduated from college, moved to Boston, and started her own business. And when she feels a spark with a gorgeous neurosurgeon named Ryle Kincaid, everything in Lily’s life seems too good to be true."],
             ["id" => 2, "image" => 'https://covers.openlibrary.org/b/olid/OL25418275M-M.jpg', "title" => "The 48 Laws of Power", "short_desc" => "Amoral, cunning, ruthless, and instructive, this piercing work distills three thousand years of the history of power in to forty-eight well explicated laws. As attention--grabbing in its design as it is in its content, this bold volume outlines the laws of power in their unvarnished essence, synthesizing the philosophies of Machiavelli, Sun-tzu, Carl von Clausewitz, and other great thinkers."],
             ["id" => 3, "image" => 'https://covers.openlibrary.org/b/olid/OL28230579M-M.jpg', "title" => "The Subtle Art of Not Giving a Fuck", "short_desc" => "This breakout, mega bestseller is the self-help book for people who hate self-help. It’s as much a pat on the back as a slap in the face. It’s the first truly no BS guide to flourishing in a crazy, crazy world—a truly counterintuitive approach to living a good life."],
@@ -21,6 +22,11 @@ class BookController extends Controller
             ["id" => 11, "image" => 'https://covers.openlibrary.org/b/olid/OL29191495M-M.jpg', "title" => "Ugly Love", "short_desc" => "ATTRACTION AT FIRST SIGHT CAN BE MESSY… When Tate Collins finds airline pilot Miles Archer passed out in front of her apartment door, it is definitely not love at first sight."],
             ["id" => 12, "image" => 'https://covers.openlibrary.org/b/olid/OL26425330M-M.jpg', "title" => "A Game of Thrones", "short_desc" => "A Game of Thrones is the first novel in A Song of Ice and Fire, a series of fantasy novels by the American author George R. R. Martin. It was first published on August 1, 1996."]
         ];
+
+        return view('index', ['books' => $books]); */
+
+        $books = Book::paginate(15);
+        // return $books;
 
         return view('index', ['books' => $books]);
     }
