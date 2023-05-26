@@ -39,6 +39,10 @@ body {
     color: #337ab7;
 }
 
+.form-center {
+    left: 25%;
+}
+
 .mt-10 {
     margin-top: 10px;
 }
