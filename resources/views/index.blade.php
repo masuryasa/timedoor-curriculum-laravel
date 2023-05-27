@@ -14,7 +14,7 @@
                         <div class="caption">
                             <h3>{{ $b->title }}</h3>
                             <p>{{ $b->short_desc }}</p>
-                            <div class="text-center"><a href="{{ route('books.show', ['id' => 1]) }}" class="btn btn-default" role="button">Show Detail</a></div>
+                            <div class="text-center"><a href="{{ route('books.show', ['id' => $b->id]) }}" class="btn btn-default" role="button">Show Detail</a></div>
                         </div>
                     </div>
                 </div>
