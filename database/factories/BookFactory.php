@@ -19,7 +19,7 @@ class BookFactory extends Factory
         return [
             'isbn' => $this->faker->isbn13(),
             'title' => $this->faker->words(rand(3, 8), true),
-            'author' => $this->faker->name,
+            'author_id' => $this->faker->numberBetween(1, 5),
             'image_path' => $this->faker->imageUrl,
             'publisher' => $this->faker->company,
             'category' => $this->faker->words(1, true),

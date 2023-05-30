@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\SearchRequest;
+use App\Models\Author;
 use App\Models\Book;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,13 +32,13 @@ class BookController extends Controller
     }
 
     public function show($id) {
-        $book = Book::findOrFail($id);
+        $book = Book::with('author')->findOrFail($id);
 
         return view('show', ['book' => $book]);
     }
 
     public function create() {
-        return view('create');
+        return view('create', ['authors' => Author::all()]);
     }
 
     public function store(BookRequest $request) {
@@ -55,7 +56,7 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $book->publish_date = Carbon::createFromFormat('Y-m-d H:i:s', $book->publish_date)->format('Y-m-d');
 
-        return view('edit', ['book' => $book])->with('status', ['success', 'Data berhasil tersimpan']);
+        return view('edit', ['book' => $book, 'authors' => Author::all()])->with('status', ['success', 'Data berhasil tersimpan']);
     }
 
     public function update(BookRequest $request, $id) {

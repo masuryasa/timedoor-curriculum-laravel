@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('books.index') }}">
                     <img alt="pro-brand-image" src="{{ asset('images/timedoor-academy-pro-logo-black.png') }}" width="150px">
                 </a>
                 </div>

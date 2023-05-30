@@ -27,7 +27,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="author">Author</label>
                             <div class="col-md-8">
-                                <input type="string" name="author" class="form-control" id="author" value="{{ old('author') }}">
+                                <select name="author" id="author" class="form-control">
+                                    @foreach ($authors as $author)
+                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                    @endforeach
+                                </select>
                                 @error('author') {{ $message }} @enderror
                             </div>
                         </div>

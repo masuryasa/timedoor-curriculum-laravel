@@ -26,7 +26,7 @@
                     {{-- details of book --}}
                     <div class="col-sm-12 col-md-9">
                         <div class="caption">
-                            <h2><b>{{ $book->title }}</b></h2> by <a href="#">{{ $book->author }}</a>
+                            <h2><b>{{ $book->title }}</b></h2> by <a href="#">{{ $book->author->name }}</a>
                             <br><br>
                             <p>ISBN <b>{{ $book->isbn }}</b></p>
                             <p>Publisher <b>{{ $book->publisher }}</b></p>

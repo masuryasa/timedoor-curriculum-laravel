@@ -28,7 +28,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="author">Author</label>
                             <div class="col-md-8">
-                                <input type="string" name="author" class="form-control" id="author" value="{{ $book->author }}">
+                                <select name="author" id="author" class="form-control">
+                                    @foreach ($authors as $idx => $author)
+                                        <option value="{{ $author->id }}" @if ($book->author_id == $author->id) selected @endif>{{ $author->name }}</option>
+                                    @endforeach
+                                </select>
                                 @error('author'){{ $message }}@enderror
                             </div>
                         </div>
