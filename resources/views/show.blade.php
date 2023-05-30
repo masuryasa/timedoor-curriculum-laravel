@@ -48,13 +48,17 @@
                         </div>
                         <div class="row pb-30">
                             <div class="col-md-6 col-sm-6 text-center">
-                                <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-default">Edit</a>
+                                <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-warning">
+                                    <span class="glyphicon glyphicon-edit"></span> Edit
+                                </a>
                             </div>
                             <div class="col-md-6 col-sm-6 text-center">
                                 <form action="{{ route('books.destroy', ['id' => $book->id]) }}" method="post">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-default">Delete</button>
+                                    <button type="submit" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>
                                 </form>
                             </div>
                         </div>

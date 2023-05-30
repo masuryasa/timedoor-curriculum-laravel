@@ -15,24 +15,28 @@
                             <label class="col-md-4 control-label" for="isbn">ISBN</label>
                             <div class="col-md-8">
                                 <input type="text" name="isbn" class="form-control" id="isbn" value="{{ $book->isbn }}">
+                                @error('isbn'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="title">Title</label>
                             <div class="col-md-8">
                                 <input type="string" name="title" class="form-control" id="title" value="{{ $book->title }}">
+                                @error('title'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="author">Author</label>
                             <div class="col-md-8">
                                 <input type="string" name="author" class="form-control" id="author" value="{{ $book->author }}">
+                                @error('author'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="publisher">Publisher</label>
                             <div class="col-md-8">
                                 <input type="string" name="publisher" class="form-control" id="publisher" value="{{ $book->publisher }}">
+                                @error('publisher'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,12 +49,14 @@
                                     <option value="horor" @if ($book->category == 'horor') selected @endif>Horor</option>
                                     <option value="history" @if ($book->category == 'history') selected @endif>History</option>
                                 </select>
+                                @error('category'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="pages">Pages</label>
                             <div class="col-md-8">
                                 <input type="number" name="pages" class="form-control" id="pages" value="{{ $book->pages }}">
+                                @error('pages'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,30 +69,35 @@
                                     <option value="german" @if ($book->language == 'german') selected @endif>German</option>
                                     <option value="french" @if ($book->language == 'french') selected @endif>French</option>
                                 </select>
+                                @error('language'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="publish_date">Publish Date</label>
                             <div class="col-md-8">
                                 <input type="date" name="publish_date" class="form-control" id="publish_date" value="{{ $book->publish_date }}">
+                                @error('publish_date'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="subjects">Subjects</label>
                             <div class="col-md-8">
                                 <input type="string" name="subjects" class="form-control" id="subjects" value="{{ $book->subjects }}">
+                                @error('subjects'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="image_path">Image Path</label>
                             <div class="col-md-8">
                                 <textarea name="image_path" id="image_path" cols="30" rows="10" class="form-control">{{ $book->subjects }}</textarea>
+                                @error('image_path'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="desc">Description</label>
                             <div class="col-md-8">
                                 <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ $book->subjects }}</textarea>
+                                @error('desc'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">

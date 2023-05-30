@@ -28,12 +28,11 @@
                 </ul>
                 <form class="navbar-form navbar-left">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="search">
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                     </div>
                   </div>
-                  <!-- <button type="submit" class="btn btn-default"></button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="./login.html">Login</a></li>
@@ -80,6 +79,8 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
