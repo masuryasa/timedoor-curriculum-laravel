@@ -4,11 +4,10 @@
 
 @section('content')
 
-    {{-- <div style="margin-left: auto; margin-right: 0; display:block"> --}}
     <div style="align-content: right">
-        <div class="row mt-20 mb-20" >
+        <div class="row mt-20 mb-20">
             <div class="col-sm-6 col-md-2">
-                <a href="{{ route('books.create') }}" class="btn btn-primary" role="button">Add New Book</a>
+                <a href="{{ route('books.create') }}" class="btn btn-primary" role="button" @guest style="pointer-events: none" @endguest>Add New Book</a>
             </div>
         </div>
     </div>
@@ -32,7 +31,7 @@
                         <div class="caption">
                             <h3>{{ $b->title }}</h3>
                             <p>{{ $b->short_desc }}</p>
-                            <div class="text-center"><a href="{{ route('books.show', ['id' => $b->id]) }}" class="btn btn-default" role="button">Show Detail</a></div>
+                            <div class="text-center"><a href="{{ route('books.show', ['book' => $b]) }}" class="btn btn-default" role="button">Show Detail</a></div>
                         </div>
                     </div>
                 </div>

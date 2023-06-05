@@ -8,7 +8,7 @@
             <div class="row text-center">
                 <h2 class="pt-50 pb-50">Update Book's Data</h2>
                 <div class="col-sm-9 col-md-6 form-center">
-                    <form class="form-horizontal text-center" action="{{ route('books.update', ['id' => $book->id]) }}" method="post">
+                    <form class="form-horizontal text-center" action="{{ route('books.update', ['book' => $book]) }}" method="post">
                         @method('PUT')
                         @csrf
                         <div class="form-group">
@@ -26,14 +26,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="author">Author</label>
+                            <label class="col-md-4 control-label" for="author_id">Author</label>
                             <div class="col-md-8">
-                                <select name="author" id="author" class="form-control">
+                                <select name="author_id" id="author_id" class="form-control">
                                     @foreach ($authors as $idx => $author)
                                         <option value="{{ $author->id }}" @if ($book->author_id == $author->id) selected @endif>{{ $author->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('author'){{ $message }}@enderror
+                                @error('author_id'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,14 +93,14 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="image_path">Image Path</label>
                             <div class="col-md-8">
-                                <textarea name="image_path" id="image_path" cols="30" rows="10" class="form-control">{{ $book->subjects }}</textarea>
+                                <textarea name="image_path" id="image_path" cols="30" rows="10" class="form-control">{{ $book->image_path }}</textarea>
                                 @error('image_path'){{ $message }}@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="desc">Description</label>
                             <div class="col-md-8">
-                                <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ $book->subjects }}</textarea>
+                                <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ $book->desc }}</textarea>
                                 @error('desc'){{ $message }}@enderror
                             </div>
                         </div>

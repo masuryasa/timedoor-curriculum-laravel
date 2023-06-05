@@ -46,22 +46,24 @@
                                 <p>{{ $book->desc }}</p>
                             @endif
                         </div>
-                        <div class="row pb-30">
-                            <div class="col-md-6 col-sm-6 text-center">
-                                <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-warning">
-                                    <span class="glyphicon glyphicon-edit"></span> Edit
-                                </a>
+                        @auth
+                            <div class="row pb-30">
+                                <div class="col-md-6 col-sm-6 text-center">
+                                    <a href="{{ route('books.edit', ['book' => $book]) }}" class="btn btn-warning" @if(auth()->user()->can('update-delete-book', $book)) @else style="pointer-events: none" @endif>
+                                        <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-6 text-center">
+                                    <form action="{{ route('books.destroy', ['book' => $book]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger" @if(auth()->user()->can('update-delete-book', $book)) @else style="pointer-events: none" @endif>
+                                            <span class="glyphicon glyphicon-trash"></span> Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 text-center">
-                                <form action="{{ route('books.destroy', ['id' => $book->id]) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-trash"></span> Delete
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                        @endauth
                     </div>
                 </div>
             </div>

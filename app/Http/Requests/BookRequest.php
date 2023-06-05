@@ -24,9 +24,9 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'isbn' => 'required|numeric|min:13|max:13',
+            'isbn' => 'required|numeric|digits:13',
             'title' => 'required|max:250',
-            'author' => 'required',
+            'author_id' => 'required',
             'image_path' => 'nullable',
             'publisher' => 'required|max:100',
             'category' => 'required',

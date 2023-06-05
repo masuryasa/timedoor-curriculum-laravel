@@ -35,8 +35,38 @@
                   </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="./login.html">Login</a></li>
-                  <li class="disabled"><a href="#">Signup</a></li>
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ Auth::user()->name }}
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                    </a>
+                                </li>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </li>
+                    @endguest
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

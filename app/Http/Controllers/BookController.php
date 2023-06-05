@@ -8,6 +8,9 @@ use App\Models\Author;
 use App\Models\Book;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\ErrorHandler\Throwing;
+use Throwable;
 
 class BookController extends Controller
 {
@@ -31,8 +34,8 @@ class BookController extends Controller
         return view('index', ['books' => $books]);
     }
 
-    public function show($id) {
-        $book = Book::with('author')->findOrFail($id);
+    public function show(Book $book) {
+        $book->with('author');
 
         return view('show', ['book' => $book]);
     }
@@ -44,7 +47,8 @@ class BookController extends Controller
     public function store(BookRequest $request) {
         try {
             $book = new Book;
-            $book->create($request->all());
+            $newData = array_merge($request->all(), ['user_id' => Auth::user()->id]);
+            $book->create($newData);
 
             return redirect()->route('books.index')->with('status', ['success', 'Data berhasil tersimpan']);
         } catch (\Throwable $th) {
@@ -52,20 +56,17 @@ class BookController extends Controller
         }
     }
 
-    public function edit($id) {
-        $book = Book::findOrFail($id);
+    public function edit(Book $book) {
         $book->publish_date = Carbon::createFromFormat('Y-m-d H:i:s', $book->publish_date)->format('Y-m-d');
 
-        return view('edit', ['book' => $book, 'authors' => Author::all()])->with('status', ['success', 'Data berhasil tersimpan']);
+        return view('edit', ['book' => $book, 'authors' => Author::all()]);
     }
 
-    public function update(BookRequest $request, $id) {
+    public function update(BookRequest $request, Book $book) {
         try {
-            $book = Book::findOrFail($id);
-
             $book->isbn = $request->isbn;
             $book->title = $request->title;
-            $book->author = $request->author;
+            $book->author_id = $request->author_id;
             $book->publisher = $request->publisher;
             $book->category = $request->category;
             $book->pages = $request->pages;
@@ -78,13 +79,12 @@ class BookController extends Controller
 
             return redirect()->route('books.index')->with('status', ['success', 'Data berhasil diperbarui']);
         } catch (\Throwable $th) {
-            return redirect()->route('books.index')->with('status', ['success', 'Data gagal diperbarui']);
+            return redirect()->route('books.index')->with('status', ['danger', 'Data gagal diperbarui']);
         }
     }
 
-    public function destroy($id) {
+    public function destroy(Book $book) {
         try {
-            $book = Book::findOrFail($id);
             $book->delete();
 
             return redirect()->route('books.index')->with('status', ['success', 'Data berhasil dihapus']);

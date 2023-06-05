@@ -25,14 +25,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="author">Author</label>
+                            <label class="col-md-4 control-label" for="author_id">Author</label>
                             <div class="col-md-8">
-                                <select name="author" id="author" class="form-control">
+                                <select name="author_id" id="author_id" class="form-control">
                                     @foreach ($authors as $author)
                                         <option value="{{ $author->id }}">{{ $author->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('author') {{ $message }} @enderror
+                                @error('author_id') {{ $message }} @enderror
                             </div>
                         </div>
                         <div class="form-group">
