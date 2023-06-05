@@ -9,8 +9,6 @@ use App\Models\Book;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\ErrorHandler\Throwing;
-use Throwable;
 
 class BookController extends Controller
 {
